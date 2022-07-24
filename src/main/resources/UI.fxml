@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="pane" prefWidth="550" prefHeight="680" fx:controller="fr.insa_rennes.algo.maze.controller.Controller" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<center>
+  <Canvas fx:id="drawingArea" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+</center>
+
+<bottom>
+<GridPane>
+  <Label text="Score: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+  <TextField fx:id="score" alignment="CENTER" editable="false" focusTraversable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+  <Label text="Size: " textAlignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+  <TextField fx:id="size" alignment="CENTER" onAction="#onSize" text="20" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+  <Button mnemonicParsing="false" onAction="#onGenerate" text="Generate" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+  <GridPane GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="3">
+
+    <Button mnemonicParsing="false" onAction="#onSolve" text="Solve with" />
+      <RadioButton id="dfs" mnemonicParsing="false" onAction="#onDfs" selected="true" text="DFS" GridPane.columnIndex="1">
+        <toggleGroup>
+          <ToggleGroup fx:id="search" />
+        </toggleGroup>
+      </RadioButton>
+      <RadioButton id="bfs" mnemonicParsing="false" onAction="#onBfs" text="BFS" toggleGroup="$search" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <RadioButton id="dijkstra" mnemonicParsing="false" onAction="#onDijkstra" text="Dijkstra with breaking wall cost" toggleGroup="$search" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Group GridPane.columnIndex="2" GridPane.rowIndex="2">
+        <TextField fx:id="cost" alignment="CENTER" onAction="#onCost" text="50" />        
+      </Group>
+  </GridPane>
+  </GridPane>
+ </bottom>
+</BorderPane>
